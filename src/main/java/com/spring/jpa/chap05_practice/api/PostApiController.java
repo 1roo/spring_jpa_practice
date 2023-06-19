@@ -28,14 +28,16 @@ public class PostApiController {
 
     private final PostService postService;
 
-    @GetMapping
+    @GetMapping //url이 /api/v1/posts 기본이기 때문에 따로 안적어줌
     public ResponseEntity<?> list(PageDTO pageDTO) {
         log.info("/api/v1/posts?page={}&size={}", pageDTO.getPage(), pageDTO.getSize());
 
 
         PostListResponseDTO dto = postService.getPosts(pageDTO);
 
-        return null;
+        return ResponseEntity
+                .ok()
+                .body(dto);
     }
 
 
