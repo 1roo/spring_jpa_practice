@@ -39,8 +39,8 @@ public class Post {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
-    @OneToMany(mappedBy = "post")
-    @Builder.Default //특정 필드를 지정한 값으로 초기화 하는 것을 강제
+    @OneToMany(mappedBy = "post", orphanRemoval = true)
+    @Builder.Default //특정 필드를 지정한 값으로 초기화 하는 것을 강제.
     private List<HashTag> hashTags = new ArrayList<>();
 
     //양방향 매핑에서 리스트쪽에 데이터를 추가하는 편의메서드 생성

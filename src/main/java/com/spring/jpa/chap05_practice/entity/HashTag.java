@@ -22,7 +22,7 @@ public class HashTag {
 
     private String tagName; //해시태그 이름
 
-    @ManyToOne(fetch = FetchType.LAZY) //쓸데없이 로딩 많이 돌리지 마셈
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //쓸데없이 로딩 많이 돌리지 마셈
     @JoinColumn(name = "post_no")
     private Post post; //Post
 
