@@ -84,7 +84,14 @@ public class PostApiController {
             return ResponseEntity.badRequest().body(fieldErrors);
         }
 
-        PostDetailResponseDTO responseDTO = postService.insert(dto);
+        try {
+            PostDetailResponseDTO responseDTO = postService.insert(dto);
+            return ResponseEntity.ok().body(responseDTO);
+        } catch (RuntimeException e) {
+            return ResponseEntity
+                    .internalServerError()
+                    .body("sorry 서버 터졌음. 원인: " + e.getMessage());
+        }
 
     }
 
